@@ -5,4 +5,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_url
     assert_response :success
   end
+
+  test "should get article" do
+    get article_url(articles(:one))
+    assert_response :success
+  end
 end
