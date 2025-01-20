@@ -1,0 +1,23 @@
+<% content_for(:html_title) {"Article - new"} %>
+
+<h1 class="govuk-heading-l">New Article</h1>
+
+<%= form_with model: @article do |form| %>
+  <div class="govuk-form-group">
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :title, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <%= form.text_field :title, class: "govuk-input" %>
+  </div>
+
+  <div class="govuk-form-group">
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :body, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <%= form.text_area :body, class: "govuk-textarea" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "govuk-button" %>
+  </div>
+<% end %>
