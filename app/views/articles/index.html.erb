@@ -7,8 +7,7 @@
 <ul class="govuk-list govuk-list--bullet">
   <% @articles.each do |article| %>
   <li>
-    <%# TODO path helper %>
-    <a class="govuk-link" href="/articles/<%= article.id %>"><%= article.title %></a>
+    <%= link_to article.title, article, class: "govuk-link" %>
   </li>
   <% end %>
 </ul>
