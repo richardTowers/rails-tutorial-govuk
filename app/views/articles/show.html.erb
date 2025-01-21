@@ -5,3 +5,7 @@
 <h1 class="govuk-heading-l"><%= @article.title %></h1>
 
 <p class="govuk-body"><%= @article.body %></p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li><%= link_to "Edit", edit_article_path(@article), class: "govuk-link" %></li>
+</ul>

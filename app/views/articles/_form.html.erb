@@ -1,0 +1,58 @@
+<% if article.errors.any? %>
+  <div class="govuk-error-summary" data-module="govuk-error-summary">
+    <div role="alert">
+      <h2 class="govuk-error-summary__title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <% article.errors.each do |error| %>
+            <li>
+              <a href="#article_<%= error.attribute %>"><%= error.full_message %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with model: article do |form| %>
+  <% title_error = article.errors[:title].present? %>
+  <%= tag.div class: ["govuk-form-group", ("govuk-form-group--error" if title_error)] do %>
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :title, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <% if title_error %>
+      <p id="title-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> <%= article.errors.where(:title).map(&:full_message).join(",") %>
+      </p>
+    <% end %>
+    <%=
+      form.text_field :title,
+                      class: [ "govuk-input", ("govuk-input--error" if title_error) ],
+                      "aria-describedby": ("title-error" if title_error)
+    %>
+  <% end %>
+
+  <% body_error = article.errors[:body].present? %>
+  <%= tag.div class: ["govuk-form-group", ("govuk-form-group--error" if body_error)] do %>
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :body, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <% if body_error %>
+      <p id="body-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> <%= article.errors.where(:body).map(&:full_message).join(", ") %>
+      </p>
+    <% end %>
+    <%=
+      form.text_area :body,
+                     class: [ "govuk-textarea", ("govuk-textarea--error" if body_error) ],
+                     "aria-describedby": ("body-error" if body_error)
+    %>
+  <% end %>
+
+  <div>
+    <%= form.submit class: "govuk-button" %>
+  </div>
+<% end %>
