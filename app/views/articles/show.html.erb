@@ -6,6 +6,7 @@
 
 <p class="govuk-body"><%= @article.body %></p>
 
-<ul class="govuk-list govuk-list--bullet">
+<ul class="govuk-list">
   <li><%= link_to "Edit", edit_article_path(@article), class: "govuk-link" %></li>
+  <li><%= button_to "Destroy", article_path(@article), method: :delete, class: "govuk-button govuk-button--warning" %></li>
 </ul>
