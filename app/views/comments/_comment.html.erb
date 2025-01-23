@@ -8,4 +8,8 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+
+  <p class="govuk-body">
+    <%= button_to "Destroy", article_comment_path(comment.article, comment), method: :delete, class: "govuk-button govuk-button--warning" %>
+  </p>
 <% end %>
