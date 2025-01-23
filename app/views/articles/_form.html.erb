@@ -52,6 +52,9 @@
     %>
   <% end %>
 
+  <%# TODO GOV.UKify %>
+  <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
+
   <div>
     <%= form.submit class: "govuk-button" %>
   </div>

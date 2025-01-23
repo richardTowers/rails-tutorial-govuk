@@ -9,6 +9,9 @@
     <%= form.text_area :body %>
 </p>
 <p>
+  <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
+</p>
+<p>
     <%= form.submit %>
 </p>
 <% end %>
