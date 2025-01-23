@@ -1,9 +1,11 @@
-<p class="govuk-body">
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<% unless comment.archived? %>
+  <p class="govuk-body">
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
 
-<p class="govuk-body">
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+  <p class="govuk-body">
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>

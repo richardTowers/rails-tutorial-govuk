@@ -5,7 +5,7 @@
 <h1 class="govuk-heading-l">Articles</h1>
 
 <ul class="govuk-list govuk-list--bullet">
-  <% @articles.each do |article| %>
+  <% @articles.reject(&:archived?).each do |article| %>
   <li>
     <%= link_to article.title, article, class: "govuk-link" %>
   </li>
