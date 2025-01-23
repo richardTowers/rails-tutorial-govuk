@@ -10,3 +10,9 @@
   <li><%= link_to "Edit", edit_article_path(@article), class: "govuk-link" %></li>
   <li><%= button_to "Destroy", article_path(@article), method: :delete, class: "govuk-button govuk-button--warning" %></li>
 </ul>
+
+<h2 class="govuk-heading-m">Comments</h2>
+<%= render @article.comments %>
+
+<h2 class="govuk-heading-m">Add a comment:</h2>
+<%= render "comments/form", article: @article %>
