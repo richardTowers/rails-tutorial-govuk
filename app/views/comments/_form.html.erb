@@ -1,12 +1,31 @@
-<%= form_with model: [ article, article.comments.build ] do |form| %>
-  <% commenter_error = form.object.errors[:commenter].present? %>
+<% if comment.errors.any? %>
+  <div class="govuk-error-summary" data-module="govuk-error-summary">
+    <div role="alert">
+      <h2 class="govuk-error-summary__title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <% comment.errors.each do |error| %>
+            <li>
+              <a href="#comment_<%= error.attribute %>"><%= error.full_message %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with model: [article, comment] do |form| %>
+  <% commenter_error = comment.errors[:commenter].present? %>
   <%= tag.div class: ["govuk-form-group", ("govuk-form-group--error" if commenter_error)] do %>
     <h3 class="govuk-label-wrapper">
       <%= form.label :commenter, class: "govuk-label govuk-label--s" %>
     </h3>
     <% if commenter_error %>
       <p id="commenter-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span> <%= form.errors.where(:commenter).map(&:full_message).join(",") %>
+        <span class="govuk-visually-hidden">Error:</span> <%= comment.errors.where(:commenter).map(&:full_message).join(", ") %>
       </p>
     <% end %>
     <%=
@@ -22,7 +41,7 @@
     </h3>
     <% if body_error %>
       <p id="body-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span> <%= form.errors.where(:body).map(&:full_message).join(",") %>
+        <span class="govuk-visually-hidden">Error:</span> <%= comment.errors.where(:body).map(&:full_message).join(", ") %>
       </p>
     <% end %>
     <%=

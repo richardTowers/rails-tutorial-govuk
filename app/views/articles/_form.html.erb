@@ -25,7 +25,7 @@
     </h2>
     <% if title_error %>
       <p id="title-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span> <%= article.errors.where(:title).map(&:full_message).join(",") %>
+        <span class="govuk-visually-hidden">Error:</span> <%= article.errors.where(:title).map(&:full_message).join(", ") %>
       </p>
     <% end %>
     <%=

@@ -1,4 +1,4 @@
-<% unless comment.archived? %>
+<% if comment.persisted? && !comment.archived? %>
   <p class="govuk-body">
     <strong>Commenter:</strong>
     <%= comment.commenter %>
