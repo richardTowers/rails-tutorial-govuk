@@ -1,5 +1,26 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<% if flash[:alert] %>
+  <div class="govuk-error-summary" data-module="govuk-error-summary">
+    <div role="alert">
+      <h2 class="govuk-error-summary__title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#"><%= flash[:alert] %></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="govuk-panel govuk-panel--confirmation">
+    <div class="govuk-panel__body">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% end %>
 
 <%= form_with url: session_path do |form| %>
   <div class="govuk-form-group">
@@ -30,4 +51,4 @@
 <% end %>
 <br>
 
-<%= link_to "Forgot password?", new_password_path %>
+<%= link_to "Forgot password?", new_password_path, class: "govuk-link" %>
