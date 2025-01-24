@@ -1,10 +1,10 @@
 <% if comment.persisted? && !comment.archived? %>
-  <p class="govuk-body">
+  <p class="govuk-body comment_commenter">
     <strong>Commenter:</strong>
     <%= comment.commenter %>
   </p>
 
-  <p class="govuk-body">
+  <p class="govuk-body comment_body">
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>

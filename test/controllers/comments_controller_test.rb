@@ -18,4 +18,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "should destroy comment" do
+    article = articles(:one)
+    comment = article.comments.create!(commenter: "Daffy Duck", body: "Quack! Quack! Quack!")
+    assert_difference -> { article.comments.count }, -1 do
+      delete article_comment_url(article, comment)
+    end
+    assert_redirected_to article_url(article)
+  end
 end

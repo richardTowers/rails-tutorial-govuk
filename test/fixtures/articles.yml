@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  title: Article One Title
+  body: Article One Body - has more than ten characters
 
 two:
-  title: MyString
-  body: MyText
+  title: Article Two Title
+  body: Article Two Body - has more than ten characters
+
+no_comments:
+  title: Article No Comments Title
+  body: Article No Comments Body - has more than ten characters
