@@ -2,9 +2,31 @@
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
 <%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
+  <div class="govuk-form-group">
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :email_address, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <%= form.email_field :email_address,
+                         required: true,
+                         autofocus: true,
+                         autocomplete: "username",
+                         placeholder: "Enter your email address",
+                         value: params[:email_address],
+                         class: "govuk-input" %>
+  </div>
+  <div class="govuk-form-group">
+    <h2 class="govuk-label-wrapper">
+      <%= form.label :password, class: "govuk-label govuk-label--m" %>
+    </h2>
+    <%= form.password_field :password,
+                           required: true,
+                           autocomplete: "current-password",
+                           placeholder: "Enter your password",
+                           maxlength: 72,
+                           class: "govuk-input" %>
+  </div>
+
+  <%= form.submit "Sign in", class: "govuk-button" %>
 <% end %>
 <br>
 
