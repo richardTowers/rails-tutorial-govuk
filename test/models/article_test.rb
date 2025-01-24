@@ -6,8 +6,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert article.valid?
   end
 
-  test "should be invalid" do
-    article = Article.new
+  test "should be invalid without title" do
+    article = Article.new(body: "Body is at least 10 chars")
+    refute article.valid?
+  end
+
+  test "should be invalid without body" do
+    article = Article.new(title: "Title")
     refute article.valid?
   end
 end
