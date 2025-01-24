@@ -1,3 +1,3 @@
-import * as GOVUKFrontend from 'govuk-frontend/govuk/all'
+import * as GOVUKFrontend from 'govuk-frontend'
 
 GOVUKFrontend.initAll()
