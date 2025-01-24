@@ -23,11 +23,7 @@
     document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
 </script>
 <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
-<header class="govuk-header" data-module="govuk-header">
-  <div class="govuk-header__container govuk-width-container">
-    <%= render "layouts/govuk-header-logo" %>
-  </div>
-</header>
+<%= render "layouts/govuk-header" %>
 <div class="govuk-width-container">
   <%= render "breadcrumbs" %>
   <main class="govuk-main-wrapper " id="main-content" role="main">
