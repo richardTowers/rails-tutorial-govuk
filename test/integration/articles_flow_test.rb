@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ArticlesFlowTest < ActionDispatch::IntegrationTest
+  include AuthenticationHelpers
+
   test "can see the articles index" do
     get articles_url
     assert_response :success
@@ -8,6 +10,7 @@ class ArticlesFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "can create an article" do
+    log_in_as(users(:one))
     get new_article_url
     assert_response :success
 
@@ -21,6 +24,7 @@ class ArticlesFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "can update an article" do
+    log_in_as(users(:one))
     article = articles(:one)
     get edit_article_url(article)
     assert_response :success
@@ -32,6 +36,7 @@ class ArticlesFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "can destroy an article" do
+    log_in_as(users(:one))
     article = articles(:one)
     assert_difference('Article.count', -1) do
       delete article_url(article)

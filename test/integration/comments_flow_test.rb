@@ -1,7 +1,10 @@
 require "test_helper"
 
 class CommentsFlowTest < ActionDispatch::IntegrationTest
+  include AuthenticationHelpers
+
   test "can create a comment" do
+    log_in_as(users(:one))
     article = articles(:no_comments)
     get article_url(article)
     assert_response :success
@@ -18,6 +21,7 @@ class CommentsFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "can destroy a comment" do
+    log_in_as(users(:one))
     article = articles(:one)
     comment = article.comments.create!(commenter: "Daffy Duck", body: "Quack! Quack! Quack!")
     assert_difference('article.comments.count', -1) do

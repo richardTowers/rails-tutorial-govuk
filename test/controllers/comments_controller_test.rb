@@ -1,6 +1,10 @@
 require "test_helper"
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    log_in_as(users(:one))
+  end
+
   test "should create comment" do
     article = articles(:one)
     assert_difference -> { article.comments.count } do

@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    log_in_as(users(:one))
+  end
+
   test "should get index" do
     get articles_url
     assert_response :success
