@@ -1,0 +1,12 @@
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <%= link_to "Home", root_path, class: "govuk-breadcrumbs__link" %>
+    </li>
+    <% if @article&.persisted? %>
+      <li class="govuk-breadcrumbs__list-item">
+        <%= link_to @article.title, @article, class: "govuk-breadcrumbs__link" %>
+      </li>
+    <% end %>
+  </ol>
+</nav>
