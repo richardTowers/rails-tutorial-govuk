@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  allow_unauthenticated_access only: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
