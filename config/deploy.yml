@@ -1,0 +1,20 @@
+service: rails-tutorial-govuk
+image: richardtowersgds/rails-tutorial-govuk
+servers:
+  web:
+    - richardtowers.deliberatepractice.dev
+proxy:
+  ssl: true
+  host: richardtowers.deliberatepractice.dev
+
+registry:
+  username: richardtowersgds
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+ssh:
+  user: ubuntu
+
