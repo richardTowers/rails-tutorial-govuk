@@ -6,6 +6,7 @@ servers:
 proxy:
   ssl: true
   host: richardtowers.deliberatepractice.dev
+  app_port: 3000
 
 registry:
   username: richardtowersgds
