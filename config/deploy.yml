@@ -12,7 +12,8 @@ registry:
   username: richardtowersgds
   password:
     - KAMAL_REGISTRY_PASSWORD
-
+volumes:
+  - /db:/rails/db
 builder:
   arch: amd64
 
